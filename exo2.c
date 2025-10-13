@@ -7,11 +7,12 @@ int main(){
     int n = 0;// dure du pret en année
     int mensualite = 0;
     printf("Quelle est le montant de votre pret");
-    scanf("%d", &c);
+    scanf("%f", &c);
     printf("Quelle est le taux d'intéret");
-    scanf("%d", &t);
+    scanf("%f", &t);
     printf("Quelle est la durée de votre pret en année");
     scanf("%d", &n);
+    t = t/100;
     mensualite = (c*(t/12))/1-pow(1+(t/12), (-n)*12);
     printf("la mensualité est %d", mensualite);
 
