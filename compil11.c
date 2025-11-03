@@ -7,7 +7,7 @@ int main() {
         printf("nope\n");
         }
     return 0;
-}1
+}
 /* .\compil11.c:9:5: error: expected identifier or '(' before 'return'
      return 0;
      ^~~~~~
