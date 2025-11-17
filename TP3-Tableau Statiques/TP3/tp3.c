@@ -58,6 +58,33 @@ int main()
             img[n][j] = 'S';
     }
 
+
+ int ligne = n + 1;
+    int larg = width - 4;
+    int r = 3;
+
+    while (larg > 0) {
+
+        int larg_tot= larg + 4;
+        int debut = (width - larg_tot) / 2;
+        int fin = debut + larg_tot - 1;
+
+        for (int colonne = 0; colonne < width; colonne++)
+            img[ligne][colonne] = ' ';
+
+        img[ligne][debut] = '\'';
+        img[ligne][debut + 1] = 'V';
+        img[ligne][fin - 1] = 'V';
+        img[ligne][fin] = '\'';
+
+        for (int colonne = debut + 2; colonne < fin - 1; colonne++)
+            img[ligne][colonne] = 'S';
+
+        ligne++;
+        larg -= r;
+    }
+
+
     for (int i = 0; i <= max_height; i++)
     {
         for (int j = 0; j <= width; j++)
