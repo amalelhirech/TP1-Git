@@ -20,13 +20,6 @@ int main(){
         }
     }
 
-    for (int i = 0; i<= max_height; i++){
-        for (int j = 0; j<=width; j++ ){
-            printf("%c", img[i][j] );
-        }
-        printf("\n");
-    }
-
     int mid = width / 2;
 
     for (int i = 0; i<n; i++){
