@@ -32,13 +32,27 @@ int main(){
             }
         }
     }
+
+     for (int j = 0; j<=mid-n; j++){
+        img[n-1][j] = '_';
+    }
+    
+    for (int j = mid+n; j<width; j++){
+        img[n-1][j] = '_';
+    }
+    
    
+
+
      for (int i = 0; i<= max_height; i++){
         for (int j = 0; j<=width; j++ ){
             printf("%c", img[i][j] );
         }
         printf("\n");
     }
+
+   
+    
     
     return 0;
 }
