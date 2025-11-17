@@ -13,20 +13,39 @@ int main(){
     int max_height = 3 * n-1;
     char img[100][100];
 
-    for(int i = 0; i<width; i++){
-        for (int j = 0; j<max_height; j++){
-            img[i][j] = '0';
+    for(int i = 0; i<max_height; i++){
+        for (int j = 0; j<width; j++){
+            img[i][j] = ' ';
             
         }
     }
 
-    for (int i = 0; i<= width; i++){
-        for (int j = 0; j<=max_height; j++ ){
+    for (int i = 0; i<= max_height; i++){
+        for (int j = 0; j<=width; j++ ){
             printf("%c", img[i][j] );
         }
         printf("\n");
     }
+
+    int mid = width / 2;
+
+    for (int i = 0; i<n; i++){
+        for (int j = mid-i; j<= mid + i; j++){
+            if ( j == mid-i || j == mid+i){
+                img[i][j] = 'A';
+            }
+            else {
+                img[i][j] = 'S';
+            }
+        }
+    }
    
+     for (int i = 0; i<= max_height; i++){
+        for (int j = 0; j<=width; j++ ){
+            printf("%c", img[i][j] );
+        }
+        printf("\n");
+    }
     
     return 0;
 }
