@@ -58,37 +58,86 @@ int main()
             img[n][j] = 'S';
     }
 
-
     int ligne = n + 1;
     int larg = width - 4;
 
-    while (larg >= 4) {
+    while (larg >= 4)
+    {
         int debut = (width - larg) / 2;
         int fin = debut + larg - 1;
 
-        for (int j = 0; j < width; j++) {
-            if (j == debut) {
+        for (int j = 0; j < width; j++)
+        {
+            if (j == debut)
+            {
                 img[ligne][j] = '\'';
                 img[ligne][j + 1] = 'V';
                 j++;
-            } else if (j == fin - 1) {
+            }
+            else if (j == fin - 1)
+            {
                 img[ligne][j] = 'V';
                 img[ligne][j + 1] = '\'';
-                j++; 
-            } else if (j > debut + 1 && j < fin - 1) {
+                j++;
+            }
+            else if (j > debut + 1 && j < fin - 1)
+            {
                 img[ligne][j] = 'S';
-            } else {
+            }
+            else
+            {
                 img[ligne][j] = ' ';
             }
         }
 
-        larg -= 4; 
+        larg -= 4;
         ligne++;
     }
 
-    
+    int jambe_largeur = n * 2;
+    int jambe_ligne = ligne - 1;
+
+    while (jambe_largeur >= 1)
+    {
+        int debut_gauche = 0;
+        int fin_gauche = jambe_largeur - 1;
+        int debut_droite = width - jambe_largeur;
+        int fin_droite = width - 1;
+
+        for (int j = 0; j < width; j++)
+        {
+
+           if (j >= debut_gauche && j <= fin_gauche) {
+            if (jambe_largeur == 1)
+                img[jambe_ligne][j] = '"'; 
+            else if (j == debut_gauche)
+                img[jambe_ligne][j] = '"';
+            else if (j == fin_gauche)
+                img[jambe_ligne][j] = '.';
+            else
+                img[jambe_ligne][j] = 'S';
+        }
+        
+        else if (j >= debut_droite && j <= fin_droite) {
+            if (jambe_largeur == 1)
+                img[jambe_ligne][j] = '"'; 
+            else if (j == debut_droite)
+                img[jambe_ligne][j] = '.';
+            else if (j == fin_droite)
+                img[jambe_ligne][j] = '"';
+            else
+                img[jambe_ligne][j] = 'S';
+        }
+        
+        else {
+            img[jambe_ligne][j] = ' ';
+        }
+    }
 
 
+        jambe_largeur -= 1;
+        jambe_ligne++;
+    }
     for (int i = 0; i <= max_height; i++)
     {
         for (int j = 0; j <= width; j++)
