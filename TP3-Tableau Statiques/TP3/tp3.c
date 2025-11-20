@@ -59,30 +59,34 @@ int main()
     }
 
 
- int ligne = n + 1;
+    int ligne = n + 1;
     int larg = width - 4;
-    int r = 3;
 
-    while (larg > 0) {
+    while (larg >= 4) {
+        int debut = (width - larg) / 2;
+        int fin = debut + larg - 1;
 
-        int larg_tot= larg + 4;
-        int debut = (width - larg_tot) / 2;
-        int fin = debut + larg_tot - 1;
+        for (int j = 0; j < width; j++) {
+            if (j == debut) {
+                img[ligne][j] = '\'';
+                img[ligne][j + 1] = 'V';
+                j++;
+            } else if (j == fin - 1) {
+                img[ligne][j] = 'V';
+                img[ligne][j + 1] = '\'';
+                j++; 
+            } else if (j > debut + 1 && j < fin - 1) {
+                img[ligne][j] = 'S';
+            } else {
+                img[ligne][j] = ' ';
+            }
+        }
 
-        for (int colonne = 0; colonne < width; colonne++)
-            img[ligne][colonne] = ' ';
-
-        img[ligne][debut] = '\'';
-        img[ligne][debut + 1] = 'V';
-        img[ligne][fin - 1] = 'V';
-        img[ligne][fin] = '\'';
-
-        for (int colonne = debut + 2; colonne < fin - 1; colonne++)
-            img[ligne][colonne] = 'S';
-
+        larg -= 4; 
         ligne++;
-        larg -= r;
     }
+
+    
 
 
     for (int i = 0; i <= max_height; i++)
