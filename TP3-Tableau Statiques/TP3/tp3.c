@@ -12,12 +12,12 @@ int main()
     }
 
     int width = n * n;
-    int max_height = 3 * n - 1;
+    int max_height = n + (width / 4) + (n / 2) + n + 5;
     char img[100][100];
 
-    for (int i = 0; i < max_height; i++)
-    {
-        for (int j = 0; j < width; j++)
+   for (int i = 0; i < max_height; i++)
+   {
+    for (int j = 0; j < width; j++)
         {
             img[i][j] = ' ';
         }
@@ -94,7 +94,49 @@ int main()
         ligne++;
     }
 
-    int jambe_largeur = n * 2;
+    int liaison_hauteur = n / 2;
+    int liaison_largeur = n * 2 + liaison_hauteur;
+    int liaison_ligne = ligne - liaison_hauteur;
+
+    for (int i = 0; i < liaison_hauteur; i++)
+    {
+        int largeur_actuelle = liaison_largeur - i * 2;
+        int debut_gauche = 0;
+        int fin_gauche = largeur_actuelle - 1;
+        int debut_droite = width - largeur_actuelle;
+        int fin_droite = width - 1;
+
+        for (int j = 0; j < width; j++)
+        {
+            
+            if (j >= debut_gauche && j <= fin_gauche)
+            {
+                if (j == debut_gauche)
+                    img[liaison_ligne][j] = '"';
+                else if (j == fin_gauche)
+                    img[liaison_ligne][j] = '.';
+                else
+                    img[liaison_ligne][j] = 'S';
+            }
+            
+            else if (j >= debut_droite && j <= fin_droite)
+            {
+                if (j == debut_droite)
+                    img[liaison_ligne][j] = '.';
+                else if (j == fin_droite)
+                    img[liaison_ligne][j] = '"';
+                else
+                    img[liaison_ligne][j] = 'S';
+            }
+            else
+            {
+                img[liaison_ligne][j] = ' ';
+            }
+        }
+        liaison_ligne++;
+    }
+
+   int jambe_largeur = width / 4;
     int jambe_ligne = ligne - 1;
 
     while (jambe_largeur >= 1)
@@ -107,33 +149,35 @@ int main()
         for (int j = 0; j < width; j++)
         {
 
-           if (j >= debut_gauche && j <= fin_gauche) {
-            if (jambe_largeur == 1)
-                img[jambe_ligne][j] = '"'; 
-            else if (j == debut_gauche)
-                img[jambe_ligne][j] = '"';
-            else if (j == fin_gauche)
-                img[jambe_ligne][j] = '.';
-            else
-                img[jambe_ligne][j] = 'S';
-        }
-        
-        else if (j >= debut_droite && j <= fin_droite) {
-            if (jambe_largeur == 1)
-                img[jambe_ligne][j] = '"'; 
-            else if (j == debut_droite)
-                img[jambe_ligne][j] = '.';
-            else if (j == fin_droite)
-                img[jambe_ligne][j] = '"';
-            else
-                img[jambe_ligne][j] = 'S';
-        }
-        
-        else {
-            img[jambe_ligne][j] = ' ';
-        }
-    }
+            if (j >= debut_gauche && j <= fin_gauche)
+            {
+                if (jambe_largeur == 1)
+                    img[jambe_ligne][j] = '"';
+                else if (j == debut_gauche)
+                    img[jambe_ligne][j] = '"';
+                else if (j == fin_gauche)
+                    img[jambe_ligne][j] = '.';
+                else
+                    img[jambe_ligne][j] = 'S';
+            }
 
+            else if (j >= debut_droite && j <= fin_droite)
+            {
+                if (jambe_largeur == 1)
+                    img[jambe_ligne][j] = '"';
+                else if (j == debut_droite)
+                    img[jambe_ligne][j] = '.';
+                else if (j == fin_droite)
+                    img[jambe_ligne][j] = '"';
+                else
+                    img[jambe_ligne][j] = 'S';
+            }
+
+            else
+            {
+                img[jambe_ligne][j] = ' ';
+            }
+        }
 
         jambe_largeur -= 1;
         jambe_ligne++;
