@@ -10,7 +10,6 @@ void afficherMenu()
     printf("5. Afficher la moyenne generale\n");
     printf("6. Afficher la meilleure note de chaque controle\n");
     printf("0. Quitter\n");
-
 }
 
 int lireChoix()
@@ -20,7 +19,6 @@ int lireChoix()
     scanf("%d", &choix);
     printf(" Votre choix : %d\n", choix);
     return choix;
-   
 }
 
 int saisirNombreEleves()
@@ -28,30 +26,29 @@ int saisirNombreEleves()
     int n;
     printf("Combien d'eleves avez vous dans la classe : ");
     scanf("%d", &n);
-    if (n<=0 || n >= 31)
+    if (n <= 0 || n >= 31)
     {
         printf("Valeur interdite\n");
         return saisirNombreEleves();
     }
     return n;
-
 }
 
 void saisirNotes(float tab[30][3], int n)
 {
     printf("Saisie des notes pour %d eleves et 3 controles.\n", n);
 
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         printf("\nEleve %d :\n", i + 1);
 
-        for(int j = 0; j < 3; j++)
+        for (int j = 0; j < 3; j++)
         {
             float note;
             printf("  notes du controle %d : ", j + 1);
             scanf("%f", &note);
 
-            while(note < 0 || note > 20)
+            while (note < 0 || note > 20)
             {
                 printf("    Note invalide. Reessayez (0 a 20) : ");
                 scanf("%f", &note);
@@ -60,7 +57,6 @@ void saisirNotes(float tab[30][3], int n)
             tab[i][j] = note;
         }
     }
-
 }
 
 void afficherNotes(int n, float tab[30][3])
@@ -68,38 +64,57 @@ void afficherNotes(int n, float tab[30][3])
     printf("\nTableau des notes\n");
     printf("Eleve   C1   C2   C3\n");
 
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         printf("%5d", i + 1);
-        for(int j = 0; j < 3; j++)
+        for (int j = 0; j < 3; j++)
         {
             printf("  %4.1f", tab[i][j]);
         }
         printf("\n");
     }
-
 }
 
 float calculerMoyenneEleve(float tab[30][3], int idx)
 {
-    
+
     float res = (tab[idx][0] + tab[idx][1] + tab[idx][2]) / 3.0;
-    return res; 
+    return res;
 }
 
 float calculerMoyenneGenerale(float tab[30][3], int n)
 {
     float somme = 0;
 
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
-        somme += calculerMoyenneEleve(tab, i); 
+        somme += calculerMoyenneEleve(tab, i);
     }
 
     float moyenneGenerale = somme / n;
     return moyenneGenerale;
 }
 
+float trouverMeilleureNoteControle(float tab[30][3], int n, int indiceControle)
+{
+
+    if (indiceControle < 0 || indiceControle > 2)
+    {
+        return -1;
+    }
+
+    float max = tab[0][indiceControle];
+
+    for (int i = 1; i < n; i++)
+    {
+        if (tab[i][indiceControle] > max)
+        {
+            max = tab[i][indiceControle];
+        }
+    }
+
+    return max;
+}
 
 int main()
 {
@@ -112,14 +127,13 @@ int main()
     saisirNotes(eleve, nbEleves);
     afficherNotes(nbEleves, eleve);
 
-    
     int idx;
     printf("Entrez l'indice de l'eleve (1 a %d) : ", nbEleves);
     scanf("%d", &idx);
 
-    if(idx >= 1 && idx <= nbEleves)
+    if (idx >= 1 && idx <= nbEleves)
     {
-        float moyEleve = calculerMoyenneEleve(eleve, idx-1); 
+        float moyEleve = calculerMoyenneEleve(eleve, idx - 1);
         printf("Moyenne de l'eleve %d : %.2f\n", idx, moyEleve);
     }
     else
@@ -129,6 +143,21 @@ int main()
 
     float moyGenerale = calculerMoyenneGenerale(eleve, nbEleves);
     printf("Moyenne generale de la classe : %.2f\n", moyGenerale);
+
+    int indiceControle;
+    printf("Entrez l'indice du controle (0 pour C1, 1 pour C2, 2 pour C3) : ");
+    scanf("%d", &indiceControle);
+
+    float meilleure = trouverMeilleureNoteControle(eleve, nbEleves, indiceControle);
+
+    if (meilleure != -1)
+    {
+        printf("Meilleure note du controle C%d : %.2f\n", indiceControle + 1, meilleure);
+    }
+    else
+    {
+        printf("Indice de controle invalide.\n");
+    }
 
     return 0;
 }
