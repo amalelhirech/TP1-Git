@@ -63,17 +63,35 @@ void saisirNotes(float tab[30][3], int n)
 
 }
 
+void afficherNotes(int n, float tab[30][3])
+{
+    printf("\nTableau des notes\n");
+    printf("Eleve   C1   C2   C3\n");
 
+    for(int i = 0; i < n; i++)
+    {
+        printf("%5d", i + 1);
+        for(int j = 0; j < 3; j++)
+        {
+            printf("  %4.1f", tab[i][j]);
+        }
+        printf("\n");
+    }
+
+
+
+}
 
 
     int main()
 {
-    float eleve[30][3] = {};   
+    float eleve[30][3];   
     int nbEleves;              
 
     afficherMenu();           
     lireChoix();               
     nbEleves = saisirNombreEleves(); 
     saisirNotes(eleve, nbEleves); 
+    afficherNotes(nbEleves, eleve);
     return 0;
 }
