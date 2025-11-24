@@ -22,13 +22,24 @@ void lireChoix()
    
 }
 
+ void saisirNombreEleves()
+{
+    int n;
+    printf("Combien d'eleves avez vous dans la classe : ");
+    scanf("%d", &n);
+    if (n<=0 || n >= 31)
+    {
+        saisirNombreEleves();
+    }
 
+}
 
 
 int main()
 {
     afficherMenu();
     lireChoix();
+    saisirNombreEleves();
     
     return 0;
 }
