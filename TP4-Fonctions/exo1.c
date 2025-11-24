@@ -129,6 +129,6 @@ int main()
 
     float moyGenerale = calculerMoyenneGenerale(eleve, nbEleves);
     printf("Moyenne generale de la classe : %.2f\n", moyGenerale);
-
+s
     return 0;
 }
