@@ -116,12 +116,23 @@ float trouverMeilleureNoteControle(float tab[30][3], int n, int indiceControle)
     return max;
 }
 
+void afficherMeilleuresNotes(float tab[30][3], int nbEleves)
+{
+    for(int c = 0; c < 3; c++)
+    {
+        float meilleure = trouverMeilleureNoteControle(tab, nbEleves, c);
+        printf("Meilleure note du controle C%d : %.2f\n", c+1, meilleure);
+    }
+}
+
 int main()
 {
 
     float eleve[30][3];
     int nbEleves;
     afficherMenu();
+    lireChoix();
+
 
     nbEleves = saisirNombreEleves();
     saisirNotes(eleve, nbEleves);
@@ -158,6 +169,8 @@ int main()
     {
         printf("Indice de controle invalide.\n");
     }
+
+    afficherMeilleuresNotes(eleve, nbEleves);
 
     return 0;
 }
