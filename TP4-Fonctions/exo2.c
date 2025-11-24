@@ -10,6 +10,12 @@ void afficherMenu()
 int main()
 {
     afficherMenu();
+    int choix = 0;
+    printf("Entrez un choix : ");
+    scanf("%d", &choix);
+    
+
+    
 
     return 0;
 }
