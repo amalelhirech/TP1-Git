@@ -10,6 +10,8 @@ void afficherMenu()
 int saisirMontant()
 {
     int montant;
+    printf("Entrez un montant : ");
+    scanf("%d", &montant);
     return montant;
 }
 
@@ -17,18 +19,20 @@ int main()
 {
     afficherMenu();
     int choix = 0;
-    printf("Entrez un choix : ");
+    printf("Entrez un choix : \n");
     scanf("%d", &choix);
+    
+    if (choix == 1) {
+        int montant = saisirMontant(); 
+        printf("Montant a retirer : %d\n", montant);
+    }
+    else if (choix == 2) {
+        printf("Au revoir !\n");
+    }
+    else {
+        printf("Choix invalide.\n");
+    }
 
-    int montant;
-    printf("Entrez un montant : ");
-    scanf("%d", &montant);
-    printf("Montant a retirer : %d", montant);
-    
-    
-    
-
-    
 
     return 0;
 }
