@@ -80,29 +80,55 @@ void afficherNotes(int n, float tab[30][3])
 
 }
 
-int calculerMoyenneEleve(float tab[30][3], int n)
+float calculerMoyenneEleve(float tab[30][3], int idx)
 {
-    int idx;
-    printf("Entrerz l'indice de l'eleve : ");
-    scanf("%d", &idx);
-    float res;
     
-    res = (tab[idx][0] + tab[idx][1] + tab[idx][2]) /3.0;
-        
-    printf("Moyenne de l'eleve %d : %.2f", idx, res);
-    return res;
+    float res = (tab[idx][0] + tab[idx][1] + tab[idx][2]) / 3.0;
+    return res; 
 }
 
-    int main()
+float calculerMoyenneGenerale(float tab[30][3], int n)
 {
-    float eleve[30][3];   
-    int nbEleves;              
+    float somme = 0;
 
-    afficherMenu();           
-    lireChoix();               
-    nbEleves = saisirNombreEleves(); 
-    saisirNotes(eleve, nbEleves); 
+    for(int i = 0; i < n; i++)
+    {
+        somme += calculerMoyenneEleve(tab, i); 
+    }
+
+    float moyenneGenerale = somme / n;
+    return moyenneGenerale;
+}
+
+
+int main()
+{
+
+    float eleve[30][3];
+    int nbEleves;
+    afficherMenu();
+
+    nbEleves = saisirNombreEleves();
+    saisirNotes(eleve, nbEleves);
     afficherNotes(nbEleves, eleve);
-    calculerMoyenneEleve(eleve, nbEleves);
+
+    
+    int idx;
+    printf("Entrez l'indice de l'eleve (1 a %d) : ", nbEleves);
+    scanf("%d", &idx);
+
+    if(idx >= 1 && idx <= nbEleves)
+    {
+        float moyEleve = calculerMoyenneEleve(eleve, idx-1); // -1 car tableau commence à 0
+        printf("Moyenne de l'eleve %d : %.2f\n", idx, moyEleve);
+    }
+    else
+    {
+        printf("Indice invalide.\n");
+    }
+
+    float moyGenerale = calculerMoyenneGenerale(eleve, nbEleves);
+    printf("Moyenne generale de la classe : %.2f\n", moyGenerale);
+
     return 0;
 }
