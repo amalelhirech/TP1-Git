@@ -18,7 +18,7 @@ void lireChoix()
     int choix;
     printf("Entrer votre choix : ");
     scanf("%d", &choix);
-    printf(" Votre choix : %d", choix);
+    printf(" Votre choix : %d\n", choix);
    
 }
 
@@ -29,6 +29,7 @@ void lireChoix()
     scanf("%d", &n);
     if (n<=0 || n >= 31)
     {
+        printf("Valeur interdite\n");
         saisirNombreEleves();
     }
 
