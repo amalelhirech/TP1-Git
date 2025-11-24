@@ -13,16 +13,17 @@ void afficherMenu()
 
 }
 
-void lireChoix()
+int lireChoix()
 {
     int choix;
     printf("Entrer votre choix : ");
     scanf("%d", &choix);
     printf(" Votre choix : %d\n", choix);
+    return choix;
    
 }
 
- void saisirNombreEleves()
+int saisirNombreEleves()
 {
     int n;
     printf("Combien d'eleves avez vous dans la classe : ");
@@ -32,8 +33,11 @@ void lireChoix()
         printf("Valeur interdite\n");
         saisirNombreEleves();
     }
+    return n;
 
 }
+
+
 
 
 int main()
