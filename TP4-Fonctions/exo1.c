@@ -78,10 +78,20 @@ void afficherNotes(int n, float tab[30][3])
         printf("\n");
     }
 
-
-
 }
 
+int calculerMoyenneEleve(float tab[30][3], int n)
+{
+    int idx;
+    printf("Entrerz l'indice de l'eleve : ");
+    scanf("%d", &idx);
+    float res;
+    
+    res = (tab[idx][0] + tab[idx][1] + tab[idx][2]) /3.0;
+        
+    printf("Moyenne de l'eleve %d : %.2f", idx, res);
+    return res;
+}
 
     int main()
 {
@@ -93,5 +103,6 @@ void afficherNotes(int n, float tab[30][3])
     nbEleves = saisirNombreEleves(); 
     saisirNotes(eleve, nbEleves); 
     afficherNotes(nbEleves, eleve);
+    calculerMoyenneEleve(eleve, nbEleves);
     return 0;
 }
