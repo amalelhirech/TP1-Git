@@ -31,20 +31,49 @@ int saisirNombreEleves()
     if (n<=0 || n >= 31)
     {
         printf("Valeur interdite\n");
-        saisirNombreEleves();
+        return saisirNombreEleves();
     }
     return n;
+
+}
+
+void saisirNotes(float tab[30][3], int n)
+{
+    printf("Saisie des notes pour %d eleves et 3 controles.\n", n);
+
+    for(int i = 0; i < n; i++)
+    {
+        printf("\nEleve %d :\n", i + 1);
+
+        for(int j = 0; j < 3; j++)
+        {
+            float note;
+            printf("  notes du controle %d : ", j + 1);
+            scanf("%f", &note);
+
+            while(note < 0 || note > 20)
+            {
+                printf("    Note invalide. Reessayez (0 a 20) : ");
+                scanf("%f", &note);
+            }
+
+            tab[i][j] = note;
+        }
+    }
 
 }
 
 
 
 
-int main()
+    int main()
 {
-    afficherMenu();
-    lireChoix();
-    saisirNombreEleves();
-    
+    float eleve[30][3] = {};   
+    int nbEleves;              
+
+    afficherMenu();           
+    lireChoix();               
+    nbEleves = saisirNombreEleves(); 
+    saisirNotes(eleve, nbEleves); 
     return 0;
 }
