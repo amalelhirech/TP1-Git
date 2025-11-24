@@ -26,6 +26,29 @@ int montantValide(int montant)
 
 }
 
+void calculDistribution(int montant)
+{
+    int billets50 = montant / 50;
+    montant = montant % 50;
+
+    int billets20 = montant / 20;
+    montant = montant % 20;
+
+    int billets10 = montant / 10;
+    montant = montant % 10;
+
+    int billets5 = montant / 5;
+    montant = montant % 5;
+
+    printf("Billets distribues :\n");
+    if (billets50 > 0) printf("%d billets de 50 euros\n", billets50);
+    if (billets20 > 0) printf("%d billets de 20 euros\n", billets20);
+    if (billets10 > 0) printf("%d billets de 10 euros\n", billets10);
+    if (billets5 > 0) printf("%d billets de 5 euros\n", billets5);
+
+
+}
+
 int main()
 {
     afficherMenu();
@@ -38,6 +61,7 @@ int main()
         if(montantValide(montant))
         {
             printf("Montant a retirer : %d\n", montant);
+            calculDistribution(montant);
         }
         
     }
