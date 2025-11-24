@@ -127,50 +127,68 @@ void afficherMeilleuresNotes(float tab[30][3], int nbEleves)
 
 int main()
 {
+    float eleve[30][3] = {0};
+    int nbEleves = 0;   
+    int choix = -1;     
 
-    float eleve[30][3];
-    int nbEleves;
-    afficherMenu();
-    lireChoix();
-
-
-    nbEleves = saisirNombreEleves();
-    saisirNotes(eleve, nbEleves);
-    afficherNotes(nbEleves, eleve);
-
-    int idx;
-    printf("Entrez l'indice de l'eleve (1 a %d) : ", nbEleves);
-    scanf("%d", &idx);
-
-    if (idx >= 1 && idx <= nbEleves)
+    while(choix != 0)   
     {
-        float moyEleve = calculerMoyenneEleve(eleve, idx - 1);
-        printf("Moyenne de l'eleve %d : %.2f\n", idx, moyEleve);
+        afficherMenu();
+        choix = lireChoix();
+
+        if (choix == 1) {
+            nbEleves = saisirNombreEleves();
+        }
+        else if (choix == 2) {
+            if (nbEleves > 0)
+                saisirNotes(eleve, nbEleves);
+            else
+                printf("Veuillez d'abord saisir le nombre d'eleves (option 1).\n");
+        }
+        else if (choix == 3) {
+            if (nbEleves > 0)
+                afficherNotes(nbEleves, eleve);
+            else
+                printf("Aucune note a afficher.\n");
+        }
+        else if (choix == 4) {
+            if (nbEleves > 0) {
+                int idx;
+                printf("Entrez l'indice de l'eleve (1 a %d) : ", nbEleves);
+                scanf("%d", &idx);
+
+                if (idx >= 1 && idx <= nbEleves) {
+                    float moyEleve = calculerMoyenneEleve(eleve, idx - 1);
+                    printf("Moyenne de l'eleve %d : %.2f\n", idx, moyEleve);
+                } else {
+                    printf("Indice invalide.\n");
+                }
+            } else {
+                printf("Veuillez saisir les notes d'abord.\n");
+            }
+        }
+        else if (choix == 5) {
+            if (nbEleves > 0) {
+                float moyGenerale = calculerMoyenneGenerale(eleve, nbEleves);
+                printf("Moyenne generale de la classe : %.2f\n", moyGenerale);
+            } else {
+                printf("Veuillez saisir les notes d'abord.\n");
+            }
+        }
+        else if (choix == 6) {
+            if (nbEleves > 0) {
+                afficherMeilleuresNotes(eleve, nbEleves);
+            } else {
+                printf("Veuillez saisir les notes d'abord.\n");
+            }
+        }
+        else if (choix == 0) {
+            printf("Au revoir !\n");
+        }
+        else {
+            printf("Choix invalide.\n");
+        }
     }
-    else
-    {
-        printf("Indice invalide.\n");
-    }
-
-    float moyGenerale = calculerMoyenneGenerale(eleve, nbEleves);
-    printf("Moyenne generale de la classe : %.2f\n", moyGenerale);
-
-    int indiceControle;
-    printf("Entrez l'indice du controle (0 pour C1, 1 pour C2, 2 pour C3) : ");
-    scanf("%d", &indiceControle);
-
-    float meilleure = trouverMeilleureNoteControle(eleve, nbEleves, indiceControle);
-
-    if (meilleure != -1)
-    {
-        printf("Meilleure note du controle C%d : %.2f\n", indiceControle + 1, meilleure);
-    }
-    else
-    {
-        printf("Indice de controle invalide.\n");
-    }
-
-    afficherMeilleuresNotes(eleve, nbEleves);
 
     return 0;
 }
