@@ -13,44 +13,22 @@ void afficherMenu()
 
 }
 
-int lireChoix()
+void lireChoix()
 {
     int choix;
-    printf("Entrer votre choix");
+    printf("Entrer votre choix : ");
     scanf("%d", &choix);
-    return choix;
+    printf(" Votre choix : %d", choix);
+   
 }
+
+
+
 
 int main()
 {
     afficherMenu();
-    int choix = lireChoix();
-
-    if(choix == 1) {
-        printf("Votre choix : 1\n");
-    }
-    else if(choix == 2) {
-        printf("Votre choix : 2\n");
-    }
-    else if(choix == 3) {
-        printf("Votre choix : 3\n");
-    }
-    else if(choix == 4) {
-        printf("Votre choix : 4\n");
-    }
-    else if(choix == 5) {
-        printf("Votre choix : 5\n");
-    }
-    else if(choix == 6) {
-        printf("Votre choix : 6\n");
-    }
-    else if(choix == 0) {
-        printf("Votre choix : 0\n");
-    }
-    else {
-        printf("Choix invalide.\n");
-    }
-
+    lireChoix();
+    
     return 0;
-
 }
