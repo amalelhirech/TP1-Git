@@ -119,7 +119,7 @@ int main()
 
     if(idx >= 1 && idx <= nbEleves)
     {
-        float moyEleve = calculerMoyenneEleve(eleve, idx-1); // -1 car tableau commence à 0
+        float moyEleve = calculerMoyenneEleve(eleve, idx-1); 
         printf("Moyenne de l'eleve %d : %.2f\n", idx, moyEleve);
     }
     else
