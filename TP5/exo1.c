@@ -91,3 +91,17 @@ int charger(int conso[7])
 }
 
 
+int sauvegarder(int conso[7]) {
+    FILE *fichier = fopen("consommation.txt", "w");  
+    if (fichier == NULL) {
+        return 0; 
+    }
+
+    for (int i = 0; i < 7; i++) {
+        fprintf(fichier, "%d ", conso[i]);  
+    }
+    fprintf(fichier, "\n");  
+
+    fclose(fichier);
+    return 1; 
+}
