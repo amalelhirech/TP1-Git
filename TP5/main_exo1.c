@@ -9,6 +9,8 @@ int main()
 
     afficher_menu();
     int choix = lire_choix();
+
+    ajouterConsommation(conso);
     
 
     return 0;
