@@ -20,3 +20,12 @@ int lire_choix ()
     scanf("%d", &choix);
 
 }
+
+void initialiser(int conso[7])
+{
+    for (int i = 0; i < 7; i++) 
+    {
+        conso[i] = 0;
+    }
+
+}
