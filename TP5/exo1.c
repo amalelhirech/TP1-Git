@@ -60,19 +60,43 @@ void ajouterConsommation(int conso[7]) {
 }
 
 
-void afficheResume(int conso[7])
-{
+
+void afficheResume(int conso[7]) {
     printf("========== Resume du jour ==========\n");
     printf("Eau      :   %d 💧\n", conso[0]);
     printf("Cafe     :   %d ☕\n", conso[1]);
-    printf("Bonbons  :   %d 🍬\n", conso[2]);
-    printf("Gateau   :   %d 🍰\n", conso[3]);
-    printf("Legumes  :   %d 🥦\n", conso[4]);
-    printf("Fruits   :   %d 🍎\n", conso[5]);
-    printf("Proteines:   %d 🍗\n", conso[6]);
-    printf("=====================================\n");
 
+    
+    printf("Bonbons  :   %d 🍬 ", conso[2]);
+    int hb = humeurBonbons(conso[2]);
+    if (hb == 0) printf("😇\n");   
+    else if (hb == 1) printf("🙂\n"); 
+    else if (hb == 2) printf("😬\n"); 
+    else printf("😱\n");          
+
+
+    printf("Gateaux  :   %d 🍰\n", conso[3]);
+
+    
+    printf("Legumes  :   %d 🥦 ", conso[4]);
+    int hl = humeurLegumes(conso[4]);
+    if (hl == 0) printf("😭\n");   
+    else if (hl == 1) printf("🙂\n"); 
+    else printf("😎\n");          
+
+    
+    printf("Fruits   :   %d 🍎 ", conso[5]);
+    int hf = humeurFruits(conso[5]);
+    if (hf == 0) printf("😔\n");   
+    else if (hf == 1) printf("🙂\n"); 
+    else printf("😀\n");          
+
+    
+    printf("Proteines:   %d 🍗\n", conso[6]);
+
+    printf("=====================================\n");
 }
+
 
 int charger(int conso[7])
 {
@@ -113,4 +137,36 @@ void utf8()
     SetConsoleOutputCP(CP_UTF8);   
     SetConsoleCP(CP_UTF8);         
     setlocale(LC_ALL, ".UTF-8");
+}
+
+int humeurBonbons(int nbBonbons) {
+    if (nbBonbons >= 0 && nbBonbons <= 3) {
+        return 0;
+    } else if (nbBonbons >= 4 && nbBonbons <= 7) {
+        return 1;
+    } else if (nbBonbons >= 8 && nbBonbons <= 12) {
+        return 2;
+    } else {
+        return 3;
+    }
+}
+
+int humeurLegumes(int nbLegumes) {
+    if (nbLegumes == 0) {
+        return 0;
+    } else if (nbLegumes <= 2) {
+        return 1;
+    } else {
+        return 2;
+    }
+}
+
+int humeurFruits(int nbFruits) {
+    if (nbFruits == 0) {
+        return 0;
+    } else if (nbFruits <= 2) {
+        return 1;
+    } else {
+        return 2;
+    }
 }
