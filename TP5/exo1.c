@@ -57,3 +57,20 @@ void ajouterConsommation(int conso[7]) {
 }
 
 
+void afficheResume(int conso[7])
+{
+    printf("========== Resume du jour ==========\n");
+    printf("Eau      :   %d\n", conso[0]);
+    printf("Cafe     :   %d\n", conso[1]);
+    printf("Bonbons  :   %d\n", conso[2]);
+    printf("Gateau   :   %d\n", conso[3]);
+    printf("Legumes  :   %d\n", conso[4]);
+    printf("Fruits   :   %d\n", conso[5]);
+    printf("Proteines:   %d\n", conso[6]);
+    printf("=====================================\n");
+
+    
+
+
+}
+
