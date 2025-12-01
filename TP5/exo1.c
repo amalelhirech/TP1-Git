@@ -18,6 +18,7 @@ int lire_choix ()
     int choix;
     printf("Entrez votre choix : ");
     scanf("%d", &choix);
+    return choix;
 
 }
 
@@ -68,9 +69,6 @@ void afficheResume(int conso[7])
     printf("Fruits   :   %d\n", conso[5]);
     printf("Proteines:   %d\n", conso[6]);
     printf("=====================================\n");
-
-    
-
 
 }
 
