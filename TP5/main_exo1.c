@@ -18,7 +18,11 @@ int main()
         else if (choix == 2) {
             afficheResume(conso);
         }
+        else 
+        {
+            printf("Choix invalide.\n");
 
+        }
     }
     return 0;
 }
