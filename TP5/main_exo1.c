@@ -4,9 +4,11 @@
 
 int main()
 {
-    int conso[7] = {0};
+    int conso[7];
+    initialiser(conso);
+
     afficher_menu();
-    lire_choix();
+    int choix = lire_choix();
     
 
     return 0;
