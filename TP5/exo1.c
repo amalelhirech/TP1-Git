@@ -72,3 +72,22 @@ void afficheResume(int conso[7])
 
 }
 
+int charger(int conso[7])
+{
+    FILE *fichier = fopen("consommation.txt", "r");  
+    if (fichier == NULL) {
+        return 0; 
+    }
+
+    for (int i = 0; i < 7; i++) {
+        if (fscanf(fichier, "%d", &conso[i]) != 1) {
+            fclose(fichier);
+            return 0; 
+        }
+    }
+
+    fclose(fichier);
+    return 1; 
+}
+
+
