@@ -7,11 +7,19 @@ int main()
     int conso[7];
     initialiser(conso);
 
-    afficher_menu();
-    int choix = lire_choix();
+    int quitter = 0;
+    while (!quitter) {
+        afficher_menu();
+        int choix = lire_choix();
 
-    ajouterConsommation(conso);
-    
+        if (choix == 1) {
+            ajouterConsommation(conso);
+        }
+        else if (choix == 2) {
+            afficheResume(conso);
+        }
+
+    }
 
     return 0;
 }
