@@ -12,5 +12,6 @@ void utf8();
 int humeurBonbons(int nb);
 int humeurLegumes(int nb);
 int humeurFruits(int nb);
+void afficherBarre(int valeur, int max);
 
 #endif 
