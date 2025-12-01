@@ -1,9 +1,13 @@
 #include "exo1.h"
+#include <windows.h>   
+#include <locale.h>
 #include <stdio.h>
+
 
 
 int main()
 {
+    utf8();
     int conso[7];
     initialiser(conso);
 
