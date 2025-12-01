@@ -11,7 +11,8 @@ void afficher_menu()
     printf("==============================\n");
     printf("1. Ajouter une consommation\n");
     printf("2. Afficher le resume du jour\n");
-    printf("3. Sauvegarder et quitter\n");
+    printf("3. Afficher les objectifs et score\n");
+    printf("4. Sauvegarder et quitter\n");
 
 }
 
@@ -202,3 +203,25 @@ void afficherBarre(int valeur, int max) {
     }
 }
 
+void afficherObjectifsEtScore(int objectifs[7], int conso[7]) {
+    printf("===== Objectifs =====\n");
+    printf("Eau      : objectif %d\n", objectifs[0]);
+    printf("Cafe     : objectif %d\n", objectifs[1]);
+    printf("Bonbons  : objectif %d\n", objectifs[2]);
+    printf("Gateaux  : objectif %d\n", objectifs[3]);
+    printf("Legumes  : objectif %d\n", objectifs[4]);
+    printf("Fruits   : objectif %d\n", objectifs[5]);
+    printf("Proteines: objectif %d\n", objectifs[6]);
+
+    int score = scoreSante(conso);
+    printf("----------------------\n");
+    printf("Score santé global : %d\n", score);
+
+    if (score <= 2) {
+        printf("💚 Excellent !\n");
+    } else if (score <= 4) {
+        printf("💛 Moyen, à améliorer.\n");
+    } else {
+        printf("❤️‍🔥 Attention, équilibre à revoir.\n");
+    }
+}
