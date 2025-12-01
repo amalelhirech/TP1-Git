@@ -9,7 +9,7 @@ void afficher_menu()
     printf("==============================\n");
     printf("1. Ajouter une consommation\n");
     printf("2. Afficher le resume du jour\n");
-    printf("3. Sauvegarder et quitter");
+    printf("3. Sauvegarder et quitter\n");
 
 }
 
