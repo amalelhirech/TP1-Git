@@ -16,4 +16,5 @@ void afficherBarre(int valeur, int max);
 void afficherObjectifsEtScore(int objectifs[7], int conso[7]);
 int scoreSante(int conso[7], int objectifs[7]);
 
+
 #endif 
