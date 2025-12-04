@@ -3,6 +3,7 @@
 #include <locale.h>
 #include <stdio.h>
 
+
 void afficher_menu()
 {
     printf("==============================\n");
@@ -400,3 +401,4 @@ void afficherObjectifsEtScore(int objectifs[7], int conso[7])
 
     printf("================================\n");
 }
+
