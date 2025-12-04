@@ -135,7 +135,6 @@ int sauvegarder(int conso[7]) {
         fprintf(fichier, "%d ", conso[i]);  
     }
     fprintf(fichier, "\n");  
-
     fclose(fichier);
     return 1; 
 }
@@ -203,25 +202,97 @@ void afficherBarre(int valeur, int max) {
     }
 }
 
+int scoreSante(int conso[7], int objectifs[7]) {
+    int score = 0;
+
+    for (int i = 0; i < 7; i++) {
+        if (objectifs[i] > 0 && conso[i] < objectifs[i]) {
+            score++;
+        }
+    }
+
+    return score;
+}
+
 void afficherObjectifsEtScore(int objectifs[7], int conso[7]) {
-    printf("===== Objectifs =====\n");
-    printf("Eau      : objectif %d\n", objectifs[0]);
-    printf("Cafe     : objectif %d\n", objectifs[1]);
-    printf("Bonbons  : objectif %d\n", objectifs[2]);
-    printf("Gateaux  : objectif %d\n", objectifs[3]);
-    printf("Legumes  : objectif %d\n", objectifs[4]);
-    printf("Fruits   : objectif %d\n", objectifs[5]);
-    printf("Proteines: objectif %d\n", objectifs[6]);
+    printf("====== Objectifs du jour ======\n");
+    printf("Categorie     Objectif     Atteint ?\n");
 
-    int score = scoreSante(conso);
-    printf("----------------------\n");
-    printf("Score santé global : %d\n", score);
+    printf("Eau           : ");
+    if (objectifs[0] > 0) {
+        printf("%d          ", objectifs[0]);
+        if (conso[0] >= objectifs[0]) printf("✅\n");
+        else printf("❌\n");
+    } else {
+        printf("-          (pas d objectif)\n");
+    }
 
-    if (score <= 2) {
+    printf("Cafe          : ");
+    if (objectifs[1] > 0) {
+        printf("%d          ", objectifs[1]);
+        if (conso[1] >= objectifs[1]) printf("✅\n");
+        else printf("❌\n");
+    } else {
+        printf("-          (pas d objectif)\n");
+    }
+
+    printf("Bonbons       : ");
+    if (objectifs[2] > 0) {
+        printf("%d          ", objectifs[2]);
+        if (conso[2] >= objectifs[2]) printf("✅\n");
+        else printf("❌\n");
+    } else {
+        printf("-          (pas d objectif)\n");
+    }
+
+    printf("Gateau        : ");
+    if (objectifs[3] > 0) {
+        printf("%d          ", objectifs[3]);
+        if (conso[3] >= objectifs[3]) printf("✅\n");
+        else printf("❌\n");
+    } else {
+        printf("-          (pas d objectif)\n");
+    }
+
+    printf("Legumes       : ");
+    if (objectifs[4] > 0) {
+        printf("%d          ", objectifs[4]);
+        if (conso[4] >= objectifs[4]) printf("✅\n");
+        else printf("❌\n");
+    } else {
+        printf("-          (pas d objectif)\n");
+    }
+
+    printf("Fruits        : ");
+    if (objectifs[5] > 0) {
+        printf("%d          ", objectifs[5]);
+        if (conso[5] >= objectifs[5]) printf("✅\n");
+        else printf("❌\n");
+    } else {
+        printf("-          (pas d objectif)\n");
+    }
+
+    printf("Proteines     : ");
+    if (objectifs[6] > 0) {
+        printf("%d          ", objectifs[6]);
+        if (conso[6] >= objectifs[6]) printf("✅\n");
+        else printf("❌\n");
+    } else {
+        printf("-          (pas d objectif)\n");
+    }
+
+    printf("--------------------------------\n");
+
+    int score = scoreSante(conso, objectifs);
+    printf("Score santé global : %d ", score);
+
+    if (score == 0) {
         printf("💚 Excellent !\n");
-    } else if (score <= 4) {
+    } else if (score <= 2) {
         printf("💛 Moyen, à améliorer.\n");
     } else {
         printf("❤️‍🔥 Attention, équilibre à revoir.\n");
     }
+
+    printf("================================\n");
 }
