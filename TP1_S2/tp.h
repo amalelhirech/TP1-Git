@@ -13,6 +13,6 @@ struct Place{
 };
 
 void lectureDonnees();
-
+void creerSalle(struct Place salle[], int nb_rangees, int nb_table_par_rangee);
 
 #endif
