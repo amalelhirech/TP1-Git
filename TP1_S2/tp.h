@@ -16,4 +16,6 @@ void lectureDonnees(int * nb_rangees, int * nb_table_par_rangee, Eleve eleves[],
 
 void creerSalle(Place salle[], int  nb_rangees, int nb_table_par_rangee);
 
+void placementAleatoire(Place salle[], int nb_rangees, int nb_table_par_rangee, Eleve eleves[],int nb_eleves,int eleve_par_place[]);
+
 #endif

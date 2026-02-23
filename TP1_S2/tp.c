@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-void lectureDonnees(int * nb_rangees, int * nb_table_par_rangee, Eleve eleves[], int *nb_eleve, int max)
+void lectureDonnees(int *nb_rangees, int *nb_table_par_rangee, Eleve eleves[], int *nb_eleve, int max)
 {
 
     char nom_fichier[50];
@@ -12,7 +12,7 @@ void lectureDonnees(int * nb_rangees, int * nb_table_par_rangee, Eleve eleves[],
     int n = 0;
 
     printf("Entrez nb rangee : ");
-    scanf("%d",nb_rangees);
+    scanf("%d", nb_rangees);
     printf("\n");
     printf("Entrez nb table par rangee : ");
     scanf("%d", nb_table_par_rangee);
@@ -45,28 +45,52 @@ void lectureDonnees(int * nb_rangees, int * nb_table_par_rangee, Eleve eleves[],
                 break;
             }
         }
-
     }
 
     *nb_eleve = n;
 
     fclose(fichier);
-
-    
 }
 
 void creerSalle(Place salle[], int nb_rangees, int nb_table_par_rangee)
 {
-    
-    int k = 0; 
-    for(int i = 0; i < nb_rangees; i++)
+
+    int k = 0;
+    for (int i = 0; i < nb_rangees; i++)
     {
-        for(int j = 0; j < nb_table_par_rangee; j++)
+        for (int j = 0; j < nb_table_par_rangee; j++)
         {
             salle[k].num_rangee = i + 1;
             salle[k].num_table = j + 1;
             salle[k].occupee = 0;
             k++;
+        }
+    }
+}
+
+void placementAleatoire(Place salle[], int nb_rangees, int nb_table_par_rangee, Eleve eleves[], int nb_eleves, int eleve_par_place[])
+{
+
+    int idx_eleve = 0;
+
+    for (int i = 0; i < nb_rangees && idx_eleve < nb_eleves; i++)
+    {
+        for (int j = 0; j < nb_table_par_rangee && idx_eleve < nb_eleves; j++)
+        {
+            int k = i * nb_table_par_rangee + j;
+
+            int voisin_occupe = 0;
+            if (j > 0 && salle[k - 1].occupee == 1)
+                voisin_occupe = 1;
+            if (j < nb_table_par_rangee - 1 && salle[k + 1].occupee == 1)
+                voisin_occupe = 1;
+
+            if (salle[k].occupee == 0 && voisin_occupe == 0)
+            {
+                eleve_par_place[k] = idx_eleve;
+                salle[k].occupee = 1;
+                idx_eleve++;
+            }
 
         }
     }
