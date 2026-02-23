@@ -35,6 +35,9 @@ int main(){
         eleve_par_place[k] = -1;
     }
 
+    placementAleatoire(salle, nb_rangees, nb_tables_par_rangee, eleves, nb_eleves,eleve_par_place);
+
+
     free(salle);
     free(eleve_par_place);
 

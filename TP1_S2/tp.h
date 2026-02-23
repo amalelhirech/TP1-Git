@@ -12,10 +12,10 @@ typedef struct{
     int occupee;
 }Place;
 
-void lectureDonnees(int * nb_rangees, int * nb_table_par_rangee, Eleve eleves[], int *nb_eleve, int max);
+void lectureDonnees(int * nb_rangees, int * nb_tables_par_rangee, Eleve eleves[], int *nb_eleve, int max);
 
-void creerSalle(Place salle[], int  nb_rangees, int nb_table_par_rangee);
+void creerSalle(Place salle[], int  nb_rangees, int nb_tables_par_rangee);
 
-void placementAleatoire(Place salle[], int nb_rangees, int nb_table_par_rangee, Eleve eleves[],int nb_eleves,int eleve_par_place[]);
+void placementAleatoire(Place salle[], int nb_rangees, int nb_tables_par_rangee, Eleve eleves[],int nb_eleves,int eleve_par_place[]);
 
 #endif
