@@ -3,24 +3,22 @@
 #include <string.h>
 #include <stdlib.h>
 
-void lectureDonnees()
+void lectureDonnees(int * nb_rangees, int * nb_table_par_rangee, Eleve eleves[], int *nb_eleve, int max)
 {
-    int nb_rangees;
-    int nb_tables_par_rangee;
+
     char nom_fichier[50];
-    struct Eleve eleve[20];
     char nom[128], prenom[128];
     char line[256];
     int n = 0;
 
     printf("Entrez nb rangee : ");
-    scanf("%d", &nb_rangees);
+    scanf("%d",nb_rangees);
     printf("\n");
     printf("Entrez nb table par rangee : ");
-    scanf("%d", &nb_tables_par_rangee);
+    scanf("%d", nb_table_par_rangee);
     printf("\n");
     printf("Entrez le chemin du fichier texte (il doit etre au meme niveau que l'exe): ");
-    scanf("%49s", &nom_fichier);
+    scanf("%49s", nom_fichier);
     printf("\n");
     printf("fichier : %s\n", nom_fichier);
 
@@ -35,26 +33,29 @@ void lectureDonnees()
     {
         if (sscanf(line, "%127s %127s", prenom, nom) == 2)
         {
-            strncpy(eleve[n].prenom, prenom, 49);
-            eleve[n].prenom[49] = '\0';
+            strncpy(eleves[n].prenom, prenom, 49);
+            eleves[n].prenom[49] = '\0';
 
-            strncpy(eleve[n].nom, nom, 49);
-            eleve[n].nom[49] = '\0';
+            strncpy(eleves[n].nom, nom, 49);
+            eleves[n].nom[49] = '\0';
 
             n++;
-            if (n >= 20)
+            if (n >= max)
             {
                 break;
             }
         }
+
     }
+
+    *nb_eleve = n;
 
     fclose(fichier);
 
     
 }
 
-void creerSalle(struct Place salle[], int nb_rangees, int nb_table_par_rangee)
+void creerSalle(Place salle[], int nb_rangees, int nb_table_par_rangee)
 {
     
     int k = 0; 
