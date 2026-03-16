@@ -13,7 +13,7 @@ typedef struct {
     int score;
 }Joueur;
 
-typedef struct{
+typedef struct Liste_joueur{
     char nom[100];
     int meilleurScore;
     struct Liste_joueur * suivant;
@@ -26,5 +26,9 @@ void normalize_string(char *dest, const char *src);
 void trim_newline(char *s);
 
 void melanger_chanson(Song *songs, int count);
+
+int convertir_score(char *s);
+
+Liste_joueur * charger_scores(char *filename);
 
 #endif

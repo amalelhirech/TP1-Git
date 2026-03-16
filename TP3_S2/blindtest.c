@@ -147,6 +147,21 @@ int load_songs(char *filename, Song **songs) {
     return count;
 }
 
+int convertir_score(char *s) {
+
+    int score = 0;
+    int i = 0;
+
+    while(s[i] != '\0'){
+
+        score = score * 10 + (s[i] - '0');
+
+        i++;
+    }
+
+    return score;
+}
+
 void melanger_chanson(Song *songs, int count){
 
     if(songs == NULL){
@@ -160,6 +175,49 @@ void melanger_chanson(Song *songs, int count){
         songs[j] = temp;
 
     }
+}
 
+Liste_joueur *charger_scores(char *filename) {
 
+    FILE *f;
+    char line[256];
+
+    Liste_joueur *premier = NULL;
+
+    f = fopen(filename, "r");
+    if (f == NULL) {
+        return NULL;
+    }
+
+    while (fgets(line, sizeof(line), f) != NULL) {
+
+    trim_newline(line);
+
+    int i = 0;
+
+    while(line[i] != ';' && line[i] != '\0'){
+        i++;
+    }
+
+    if(line[i] == '\0'){
+        continue;
+    }
+
+    line[i] = '\0';
+
+    char *nom = line;
+    char *score_str = line + i + 1;
+
+    Liste_joueur *nouveau = malloc(sizeof(Liste_joueur));
+
+    strcpy(nouveau->nom, nom);
+    nouveau->meilleurScore = convertir_score(score_str);
+
+    nouveau->suivant = premier;
+    premier = nouveau;
+}
+
+    fclose(f);
+
+    return premier;
 }
