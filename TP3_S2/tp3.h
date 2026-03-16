@@ -19,7 +19,12 @@ typedef struct{
     struct Liste_joueur * suivant;
 } Liste_joueur;
 
+int load_songs(char *filename, Song *songs);
+void play_song_excerpt_at(const char *filename, int start, int seconds);
+int string_equals_normalized(const char *a, const char *b);
+void normalize_string(char *dest, const char *src);
+void trim_newline(char *s);
 
-
+void melanger_chanson(Song *songs, int count);
 
 #endif
