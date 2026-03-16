@@ -93,12 +93,11 @@ void play_song_excerpt_at(const char *filename, int start, int seconds) {
 Charge les morceaux depuis songs.txt dans un tableau.
 Retourne le nombre de morceaux chargés.
 */
-int load_songs(char *filename, Song *songs) {
-    if(songs == NULL){
+int load_songs(char *filename, Song **songs) {
+    *songs = malloc(sizeof(Song) * 100);
+    if(songs == NULL || *songs == NULL){
         return 1;
     }
-
-    songs = malloc(sizeof(Song) * 100);
 
     int taille = 100;
 
@@ -134,12 +133,12 @@ int load_songs(char *filename, Song *songs) {
 
         if(count >= taille){
             taille *= 100;
-            songs =realloc(songs, sizeof(Song) *taille);
+            *songs = realloc(songs, sizeof(Song) *taille);
         }
 
-        strcpy(songs[count].nom_fichier, file);
-        strcpy(songs[count].titre, file);
-        strcpy(songs[count].artiste, file);
+        strcpy((*songs)[count].nom_fichier, file);
+        strcpy((*songs)[count].titre, title);
+        strcpy((*songs)[count].artiste, artist);
 
         count++;
     }
