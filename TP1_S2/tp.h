@@ -18,4 +18,6 @@ void creerSalle(Place salle[], int  nb_rangees, int nb_tables_par_rangee);
 
 void placementAleatoire(Place salle[], int nb_rangees, int nb_tables_par_rangee, Eleve eleves[],int nb_eleves,int eleve_par_place[]);
 
+void afficherPlan(Place salle[], int nb_rangees, int nb_tables_par_rangee,Eleve eleves[], int eleve_par_place[]);
+
 #endif

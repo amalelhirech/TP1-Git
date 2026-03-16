@@ -95,3 +95,7 @@ void placementAleatoire(Place salle[], int nb_rangees, int nb_table_par_rangee, 
         }
     }
 }
+
+void afficherPlan(Place salle[], int nb_rangees, int nb_tables_par_rangee,Eleve eleves[], int eleve_par_place[]){
+    
+}
