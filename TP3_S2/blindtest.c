@@ -142,15 +142,25 @@ int load_songs(char *filename, Song *songs) {
         strcpy(songs[count].artiste, file);
 
         count++;
-
-
-// TO DO
-// STOCKER LES CHANSONS
-
-        count++;
     }
 
     fclose(f);
     return count;
 }
 
+void melanger_chanson(Song *songs, int count){
+
+    if(songs == NULL){
+        return;
+    }
+
+    for (int i = 0; i < count ; i++){
+        int j = rand() % count;
+        Song temp = songs[i];
+        songs[i] = songs[j];
+        songs[j] = temp;
+
+    }
+
+
+}
