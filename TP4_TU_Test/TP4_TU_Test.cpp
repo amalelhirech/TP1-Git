@@ -63,5 +63,10 @@ namespace TP4TUTest
 		}
 		
 		// Test factorielle 
+
+		TEST_METHOD(TestFactorielle)
+		{
+			Assert::AreEqual(factorielle(0), 1);
+		}
 	};
 }
