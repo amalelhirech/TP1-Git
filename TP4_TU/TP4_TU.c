@@ -1,4 +1,6 @@
 #include "TP4_TU.h"
+#include <stdio.h>
+#include <string.h>
 
 int estPair(int n) {
     return n % 2 == 0;
@@ -24,6 +26,9 @@ int factorielle(int n) {
 }
 
 int contientMajuscule(const char* chaine) {
+    if(chaine == NULL){
+        return 0;
+    }
     int i = 0;
     while (chaine[i] != '\0') {
         if (chaine[i] >= 'A' && chaine[i] <= 'Z') {
@@ -35,6 +40,9 @@ int contientMajuscule(const char* chaine) {
 }
 
 int divisionExacte(int a, int b) {
+    if(b == 0){
+        return 0;
+    }
     return a % b == 0;
 }
 
