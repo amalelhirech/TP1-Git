@@ -115,5 +115,7 @@ namespace TP4TUTest
 		{
 			Assert::AreEqual(contientMajuscule(NULL), 0);
 		}
+
+		// Test divisionExacte 
 	};
 }
