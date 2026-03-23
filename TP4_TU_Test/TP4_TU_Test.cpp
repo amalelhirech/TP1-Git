@@ -122,5 +122,10 @@ namespace TP4TUTest
 		{
 			Assert::AreEqual(divisionExacte(10,2), 1);
 		}
+
+		TEST_METHOD(TestDivisionExacte2)
+		{
+			Assert::AreEqual(divisionExacte(10, 3), 0);
+		}
 	};
 }
