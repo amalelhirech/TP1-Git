@@ -160,5 +160,11 @@ namespace TP4TUTest
 			int tab[] = { -1, 4, -3 };
 			Assert::AreEqual(sommeTableau(tab, 3), 0);
 		}
+
+		TEST_METHOD(TestSommeTableaux4)
+
+		{
+			Assert::AreEqual(sommeTableau(NULL, 0), 0);
+		}
 	};
 }
