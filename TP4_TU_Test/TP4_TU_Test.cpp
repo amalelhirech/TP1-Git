@@ -88,5 +88,12 @@ namespace TP4TUTest
 		{
 			Assert::AreEqual(factorielle(-3), 0);
 		}
+
+		// 6 Test majuscules 
+
+		TEST_METHOD(TestContientMajuscule)
+		{
+			Assert::AreEqual(contientMajuscule("bonjour"), 0);
+		}
 	};
 }
