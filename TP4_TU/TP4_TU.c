@@ -50,6 +50,10 @@ int sommeTableau(const int tab[], int taille) {
 	if (taille <= 0) {
         return 0;
     }
+
+	if (tab == NULL) {
+        return 0;
+    }
     int somme = 0;
     for (int i = 0; i < taille; i++) {
         somme += tab[i];

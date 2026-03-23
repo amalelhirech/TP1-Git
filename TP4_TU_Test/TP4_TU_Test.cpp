@@ -166,5 +166,11 @@ namespace TP4TUTest
 		{
 			Assert::AreEqual(sommeTableau(NULL, 0), 0);
 		}
+
+		TEST_METHOD(TestSommeTableaux6)
+
+		{
+			Assert::AreEqual(sommeTableau(NULL, 4), 0);
+		}
 	};
 }
