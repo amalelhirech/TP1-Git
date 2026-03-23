@@ -12,6 +12,8 @@ namespace TP4TUTest
 	TEST_CLASS(TP4TUTest)
 	{
 	public:
+
+		// estPair 
 		
 		TEST_METHOD(TestEstPair)
 		{
@@ -36,6 +38,13 @@ namespace TP4TUTest
 		TEST_METHOD(TestEstPair5)
 		{
 			Assert::AreEqual(estPair(-3), 0);
+		}
+
+		// max2
+
+		TEST_METHOD(TestMax2)
+		{
+			Assert::AreEqual(max2(5, 3), 5);
 		}
 	};
 }
